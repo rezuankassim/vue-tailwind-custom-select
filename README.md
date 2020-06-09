@@ -1,4 +1,4 @@
-# custom-select-menu
+# vue-tailwind-custom-select
 
 ## Project setup
 ```
