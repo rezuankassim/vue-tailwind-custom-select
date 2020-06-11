@@ -1,18 +1,26 @@
 <template>
   <div id="app" class="p-48 antialiased font-sans text-gray-900">
     <div class="max-w-xs mx-auto">
-      <select name="wrestler" id="wrestler" v-model="selectedWrestler">
-        <option v-for="wrestler in wrestlers" :key="wrestler">
-          {{ wrestler }}
-        </option>
-      </select>
+      <VueSelect :data="wrestlers" v-model="selectedWrestler" v-on:valueSelect="onValueSelect">
+        <template v-slot:SelectLabel>Wrestlers</template>
+      </VueSelect>
     </div>  
   </div>
 </template>
 
 <script>
+import VueSelect from './components/VueSelect';
+
 export default {
   name: 'App',
+  components: {
+    VueSelect
+  },
+  methods: {
+    onValueSelect(value) {
+      this.selectedWrestler = value;
+    }
+  },
   data() {
     return {
       selectedWrestler: 'Hulk Hogan',
